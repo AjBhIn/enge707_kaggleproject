@@ -1,0 +1,55 @@
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python cache & byte-code
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Environment & secrets
+.env
+*.env
+
+# Kaggle dataset & archives (GitHub rejects files > 100MB)
+data/
+input/
+raw_data/
+*.zip
+*.tar.gz
+*.7z
+
+# PyTorch checkpoints & model weights
+checkpoints/
+models/
+weights/
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.onnx
+*.safetensors
+
+# Logs & tracking
+runs/
+wandb/
+lightning_logs/
+*.log
+
+# Outputs & submissions
+output/
+outputs/
+submissions/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
