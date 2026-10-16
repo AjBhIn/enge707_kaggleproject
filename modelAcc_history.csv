@@ -1,0 +1,2 @@
+Timestamp,Model_Name,Epochs,Batch_Size,Learning_Rate,Train_Accuracy,Val_Accuracy,Notes
+2026-10-16 00:47:42,SimpleCNN_Baseline,5,32,0.001,0.9424,0.9589,Baseline Model V.1.
