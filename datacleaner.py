@@ -50,6 +50,8 @@ def get_transforms(is_train=True):
             transforms.ToTensor(), # converting images to tensors
             normalize # normalizing the images 
         ])
+    # Runs this when is_train is set to false, this means the testing does not get 
+    # manipulated.
     else:
         return transforms.Compose([
             transforms.Resize((224, 224)),
@@ -77,3 +79,45 @@ def build_training_dataloaders(csv_path, img_dir, batch_size=32, val_split=0.2):
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
     
     return train_loader, val_loader
+
+
+
+# --- Make the data Ready before feeding to ready model ---
+
+class TestDataset(Dataset):
+    def __init__(self, submission_df, img_dir, transform=None):
+        self.dataframe = submission_df
+        self.img_dir = img_dir
+        self.transform = transform
+        
+    def __len__(self):
+        return len(self.dataframe)
+    
+    def __getitem__(self, idx):
+        # Format the ID to match the filenames (e.g., '1' -> '00001.jpg')
+        img_id = str(self.dataframe.iloc[idx]['image_id']).zfill(5)
+        img_name = f"{img_id}.jpg"
+        img_path = os.path.join(self.img_dir, img_name).replace('\\', '/')
+        
+        # Load image and ensure 3 color channels
+        image = Image.open(img_path).convert('RGB')
+        
+        if self.transform:
+            image = self.transform(image)
+            
+        # Return the processed image and its original ID
+        return image, self.dataframe.iloc[idx]['image_id']
+
+def build_test_dataloader(sample_sub_path, img_dir, batch_size=32):
+    """Utility function to load the Kaggle test set for inference."""
+    # Load the Kaggle sample submission file
+    sub_df = pd.read_csv(sample_sub_path)
+    
+    # We use get_transforms(is_train=False) because we NEVER augment test data
+    test_dataset = TestDataset(sub_df, img_dir=img_dir, transform=get_transforms(is_train=False))
+    
+    # shuffle=False is critical! We must keep the exact order of the CSV for Kaggle
+    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+    
+    print(f"Test Pipeline Ready! Images to predict: {len(sub_df)}")
+    return test_loader, sub_df
