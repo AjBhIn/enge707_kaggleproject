@@ -1,2 +1,4 @@
 Timestamp,Model_Name,Epochs,Batch_Size,Learning_Rate,Train_Accuracy,Val_Accuracy,Notes
 2026-10-16 00:47:42,SimpleCNN_Baseline,5,32,0.001,0.9424,0.9589,Baseline Model V.1.
+2026-10-17 22:24:35,Transfer_Model_v1,5,32,0.001,0.8567,0.8603,Transfer Model using Pre Trained Model.
+2026-10-17 23:34:06,ResNet18_FineTuned,5,32,0.0001,0.9905,0.9896,Unfroze all layers and fine-tuned with a lower learning rate.

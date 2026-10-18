@@ -16,3 +16,6 @@ git branch -d <branch_name>
 # Virtual env
 - Activating - venv/Scripts/activate
 - Creating - python -m venv venv
+
+# DELETE THIS WHEN FINSIHED WITH THIS PROJECT
+KGAT_cac26aaa175f3f58d217eb779bd68595
