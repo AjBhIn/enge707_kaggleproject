@@ -44,7 +44,7 @@ def get_transforms(is_train=True):
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     if is_train:
         return transforms.Compose([
-            transforms.RandomResizedCrop(224, scale=(0.8, 1.0)), # Slight random zooming
+            transforms.RandomResizedCrop(120, scale=(0.8, 1.0)), # Slight random zooming
             transforms.RandomHorizontalFlip(p=0.5),
             transforms.RandomRotation(degrees=15),
             transforms.ColorJitter(brightness=0.2, contrast=0.2), # Random lighting changes
@@ -56,7 +56,7 @@ def get_transforms(is_train=True):
             # Changed the Image Size to smaller 
             # as most of the images are smaller
             # increases speed
-            transforms.Resize((130, 130)),
+            transforms.Resize((120, 120)),
             transforms.ToTensor(),
             normalize
         ])
