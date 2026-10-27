@@ -7,3 +7,5 @@ Timestamp,Model_Name,Epochs,Batch_Size,Learning_Rate,Train_Accuracy,Val_Accuracy
 2026-10-25 03:14:51,Transfer_Model_ResNet18_v2,15,32,0.0001,0.8171,0.9947,Transfer Model ResNet18 tuned phase 2 UN FROZEN.
 2026-10-26 01:36:40,Transfer_Model_Google_Net_v1,5,32,0.001,0.7887,0.8272,Transfer Model Google Net tuned phase 1 FROZEN.
 2026-10-26 02:40:54,Transfer_Model_Google_Net_v1,15,32,0.0001,0.9968,0.9938,Transfer Model Google Net tuned phase 2 UNFROZEN.
+2026-10-27 03:40:35,Transfer_Model_ResNet18_v6_b,5,32,0.001,0.8122,0.8197,Transfer Model ResNet18 tuned phase 1 FROZEN.
+2026-10-27 04:34:56,Transfer_Model_ResNet18_v6_b,15,32,0.0001,0.9970,0.9948,Transfer Model ResNet18 tuned phase 2 FROZEN.
